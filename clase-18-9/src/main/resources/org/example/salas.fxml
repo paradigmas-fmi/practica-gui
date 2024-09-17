@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<?import javafx.scene.control.Label?>
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.PersonaController">
+    <children>
+        <Label text="Seleccione una sala" />
+        <Button fx:id="Sala1" mnemonicParsing="false" text="Sala 1" onAction="#handleLoginButtonAction" />
+        <Button fx:id="Sala2" mnemonicParsing="false" text="Sala 2 " onAction="#handleLoginButtonAction" />
+        <Button fx:id="Sala3" mnemonicParsing="false" text="Sala 3" onAction="#handleLoginButtonAction" />
+    </children>
+</VBox>
