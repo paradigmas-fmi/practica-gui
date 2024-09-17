@@ -24,6 +24,9 @@ public class PersonaController {
     private TextField dni;
 
     @FXML
+    private TextField email;
+
+    @FXML
     private Button DatosBoton;
 
     @FXML
@@ -35,8 +38,9 @@ public class PersonaController {
         String nombreText = nombre.getText();
         String apellidoText = apellido.getText();
         String dniText = dni.getText();
+        String emailText = email.getText();
 
-        if (nombreText.isEmpty() || apellidoText.isEmpty() || dniText.isEmpty()) {
+        if (nombreText.isEmpty() || apellidoText.isEmpty() || dniText.isEmpty() || emailText.isEmpty()) {
             System.out.println("Todos los campos deben ser llenados.");
         } else {
             // TODO Cargar la nueva escena pantalla de salas

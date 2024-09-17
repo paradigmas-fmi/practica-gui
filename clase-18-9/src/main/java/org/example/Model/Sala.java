@@ -1,13 +1,14 @@
 package org.example.Model;
 
 import java.util.HashMap;
+import org.example.Model.Pelicula;
 
 public class Sala {
     private int id;
-    private String pelicula;
+    private Pelicula pelicula;
     private HashMap<Character,HashMap<Integer, Asiento>> asientos;
 
-    public Sala(int id, String pelicula) {
+    public Sala(int id, Pelicula pelicula) {
         this.id = id;
         this.pelicula = pelicula;
         this.asientos = new HashMap<>();
