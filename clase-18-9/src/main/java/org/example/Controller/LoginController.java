@@ -1,18 +1,13 @@
 package org.example.Controller;
 
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
-import javafx.scene.layout.VBox;
-import javafx.stage.Stage;
-import org.example.Model.Persona;
 
 import java.io.IOException;
 
-public class PersonaController {
+public class LoginController {
 
     @FXML
     private TextField nombre;
@@ -27,10 +22,7 @@ public class PersonaController {
     private TextField email;
 
     @FXML
-    private Button DatosBoton;
-
-    @FXML
-    private Label errorMessage;
+    private Button botonDatosIngresados;
 
     @FXML
     private void handleLoginButtonAction() throws IOException {
@@ -41,7 +33,11 @@ public class PersonaController {
         String emailText = email.getText();
 
         if (nombreText.isEmpty() || apellidoText.isEmpty() || dniText.isEmpty() || emailText.isEmpty()) {
-            System.out.println("Todos los campos deben ser llenados.");
+            Alert alerta = new Alert(Alert.AlertType.WARNING);
+            alerta.setTitle("Campos vacíos");
+            alerta.setHeaderText(null);
+            alerta.setContentText("Por favor llene todos los campos");
+            alerta.showAndWait();
         } else {
             // TODO Cargar la nueva escena pantalla de salas
         }

@@ -4,7 +4,7 @@
 <?import javafx.scene.layout.VBox?>
 
 <?import javafx.scene.control.Label?>
-<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.PersonaController">
+<VBox prefHeight="400.0" prefWidth="640.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.example.Controller.LoginController">
     <children>
         <Label text="Seleccione una sala" />
         <Button fx:id="Sala1" mnemonicParsing="false" text="Sala 1" onAction="#handleLoginButtonAction" />
