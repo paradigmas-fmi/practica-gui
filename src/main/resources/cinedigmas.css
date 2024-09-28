@@ -1,0 +1,37 @@
+.root {
+    display: block;
+    -fx-background-image: url("org/practicagui/images/cinema-background.png");
+    -fx-background-repeat: no-repeat;
+}
+.label {
+    -fx-font-size: 14px;
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+    -fx-text-align: parent center;
+}
+
+.button {
+    -fx-text-fill: white;
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-weight: bold;
+    -fx-background-color: linear-gradient(#61a2b1, #2A5058);
+    -fx-effect: dropshadow(three-pass-box , rgba(0,0,0,0.6) , 5, 0.0 , 0 , 1 );
+}
+
+#reservaTitle {
+    -fx-font-size: 30px;
+    -fx-font-family: "DejaVu Serif";
+    -fx-font-weight: bold;
+    -fx-text-fill: #ffffff;
+    -fx-effect: dropshadow(gaussian , rgba(255,255,255,0.5) , 0,0,0,1 );
+}
+
+#seleccion {
+    -fx-font-size: 16px;
+}
+
+#posterViewport {
+    -fx-fill: red;
+}
