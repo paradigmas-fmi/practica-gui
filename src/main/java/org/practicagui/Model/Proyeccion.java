@@ -18,6 +18,7 @@ public class Proyeccion {
         this.sala = sala;
         this.horario = horario;
         this.reservas = this.crearButacas();
+        this.idProyeccion = idProyeccion;
     }
 
     private Butaca[][] crearButacas() {

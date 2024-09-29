@@ -48,7 +48,6 @@ public class Cine {
         Sala sala = salas.get(idSala);
         Map<Integer, Proyeccion> proyecciones = this.proyecciones.get(pelicula);
         Proyeccion newProyeccion = new Proyeccion(pelicula, sala, horario, counterProyecciones);
-        counterProyecciones++;
         for (Proyeccion proyeccion : proyecciones.values()) {
             if (newProyeccion.equals(proyeccion)) {
                 return false;
@@ -58,6 +57,7 @@ public class Cine {
             }
         }
         this.proyecciones.get(pelicula).put(counterProyecciones, newProyeccion);
+        counterProyecciones++;
         return true;
     }
 
@@ -84,14 +84,9 @@ public class Cine {
         return this.peliculas.get(idPelicula);
     }
 
-    public Proyeccion getProyeccionPorId(int idProyeccion) {
-        for (Map<Integer, Proyeccion> proyeccionMap : proyecciones.values()) {
-            Proyeccion proyeccion = proyeccionMap.getOrDefault(idProyeccion, null);
-            if (proyeccion != null) {
-                return proyeccion;
-            }
-        }
-        return null;
+    public Proyeccion getProyeccionPorId(int idProyeccion, Pelicula pelicula) {
+        Map<Integer, Proyeccion> proyecciones = this.proyecciones.get(pelicula);
+        return proyecciones.get(idProyeccion);
     }
 
     public ArrayList<Proyeccion> getProyeccionesPelicula(Pelicula pelicula) {

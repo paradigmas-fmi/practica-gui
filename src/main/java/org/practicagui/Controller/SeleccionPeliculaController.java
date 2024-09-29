@@ -77,5 +77,6 @@ public class SeleccionPeliculaController extends SceneController {
         } else {
             this.showAlert("Campos sin seleccionar", "Por favor seleccione una película y función.");
         }
+
     }
 }

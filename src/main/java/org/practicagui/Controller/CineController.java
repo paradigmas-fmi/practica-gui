@@ -72,12 +72,12 @@ public class CineController { // Removed static
     }
 
     public Pelicula getPeliculaSeleccionada() {
-        return peliculaSeleccionada;
+        return this.peliculaSeleccionada;
     }
 
     public void seleccionarProyeccion(ProyeccionView proyeccionView) {
         int idProyeccionSeleccionada = proyeccionView.getIdProyeccion();
-        this.proyeccionSeleccionada = cine.getProyeccionPorId(idProyeccionSeleccionada);
+        this.proyeccionSeleccionada = cine.getProyeccionPorId(idProyeccionSeleccionada, this.peliculaSeleccionada);
     }
 
     public Proyeccion getProyeccionSeleccionada() {
