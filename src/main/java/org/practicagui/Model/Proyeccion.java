@@ -54,8 +54,8 @@ public class Proyeccion {
         return pelicula.getDuracionEnMinutos();
     }
 
-    public int getSala() {
-        return sala.getId();
+    public Sala getSala() {
+        return sala;
     }
 
     public LocalDateTime getHorario() {
@@ -73,7 +73,7 @@ public class Proyeccion {
         }
         if ((o instanceof Proyeccion)) {
             Proyeccion p = (Proyeccion) o;
-            return (Objects.equals(p.getPelicula(), this.pelicula.getTitulo())) && (p.getHorario() == this.horario) && (p.getSala() == sala.getId());
+            return (Objects.equals(p.getPelicula(), this.pelicula.getTitulo())) && (p.getHorario() == this.horario) && (p.getSala().getId() == sala.getId());
         }
         return false;
     }

@@ -11,7 +11,7 @@ public class ProyeccionView {
     }
 
     public String mostrarProyeccion() {
-        return String.format("Película: %s - Sala: %d - Horario: %s", proyeccion.getPelicula(), proyeccion.getSala(), proyeccion.getHorario());
+        return String.format("Película: %s - Sala: %d - Horario: %s", proyeccion.getPelicula(), proyeccion.getSala().getId(), proyeccion.getHorario());
     }
 
     @Override
