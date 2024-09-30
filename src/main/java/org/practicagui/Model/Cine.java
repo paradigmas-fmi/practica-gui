@@ -22,7 +22,7 @@ public class Cine {
     public boolean addSala(int idSala, int filas, int butacasPorFila) {
         if ((salas.containsKey(idSala)) || (idSala < 0)) {
             return false;
-        } else if ((filas < 0) || (butacasPorFila < 0)) {
+        } else if ((filas <= 0) || (butacasPorFila <= 0)) {
             return false;
         }
         salas.put(idSala, new Sala(idSala, filas, butacasPorFila));
@@ -63,8 +63,8 @@ public class Cine {
     private boolean seSuperponen(Proyeccion p1, Proyeccion p2) {
         int duracionp1 = p1.getDuracion();
         int duracionp2 = p2.getDuracion();
-        int salap1 = p1.getSala();
-        int salap2 = p2.getSala();
+        int salap1 = p1.getSala().getId();
+        int salap2 = p2.getSala().getId();
         LocalDateTime horarioIniciop1 = p1.getHorario();
         LocalDateTime horarioIniciop2 = p2.getHorario();
         LocalDateTime horarioFinp1 = horarioIniciop1.plusMinutes(duracionp1);

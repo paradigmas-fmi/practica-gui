@@ -2,11 +2,14 @@ package org.practicagui.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import org.practicagui.Model.Butaca;
 import org.practicagui.View.ButacaView;
@@ -15,29 +18,53 @@ import org.practicagui.View.PersonaView;
 import java.io.IOException;
 import java.util.Optional;
 
-public class SeleccionButacaController extends SceneController{
-
+public class SeleccionButacaController extends SceneController {
 
     @FXML
-    private GridPane asientos;
+    public Button backButton;
+    @FXML
+    private AnchorPane anchorPane;
     @FXML
     private ImageView pantalla;
     private ButacaView butacaView = new ButacaView();
 
-
-
     public void initialize() {
-        for (var node : asientos.getChildren().stream().map(n -> (ImageView) n).toList()) {
-            int columna = GridPane.getColumnIndex(node);
-            int fila = GridPane.getRowIndex(node);
-            Butaca butaca = this.cineController.getButaca(fila,columna);
-            if (butaca.estaDisponible()) {
-                node.setImage(this.butacaView.getAsientoDisponible());
-            } else {
-                node.setImage(this.butacaView.getAsientoOcupado());
+        GridPane asientos = new GridPane();
+        asientos.setPrefSize(400, 400); // Set fixed size
+        asientos.setMaxSize(400, 400);
+        asientos.setMinSize(400, 400);
+
+        int rows = this.cineController.getProyeccionSeleccionada().getSala().getFilas();
+        int columns = this.cineController.getProyeccionSeleccionada().getSala().getButacasPorFila();
+
+        double cellWidth = 400.0 / columns;
+        double cellHeight = 400.0 / rows;
+
+        for (int row = 0; row < rows; row++) {
+            for (int col = 0; col < columns; col++) {
+                ImageView seatImage = new ImageView();
+                Butaca butaca = cineController.getButaca(row, col);
+                if (butaca.estaDisponible()) {
+                    seatImage.setImage(butacaView.getAsientoDisponible());
+                } else {
+                    seatImage.setImage(butacaView.getAsientoOcupado());
+                }
+                seatImage.setFitWidth(cellWidth);
+                seatImage.setFitHeight(cellHeight);
+                seatImage.setPreserveRatio(true);
+                seatImage.setOnMouseClicked(this::handleMouseClicked);
+                asientos.add(seatImage, col, row);
             }
         }
+
+        anchorPane.getChildren().add(asientos);
+        AnchorPane.setTopAnchor(asientos, 50.0);
+        AnchorPane.setBottomAnchor(asientos, 50.0);
+        AnchorPane.setLeftAnchor(asientos, 50.0);
+        AnchorPane.setRightAnchor(asientos, 50.0);
+        asientos.setAlignment(Pos.CENTER);
     }
+
 
     public void handleMouseClicked(MouseEvent mouseEvent) {
         ImageView nodo = (ImageView) mouseEvent.getSource();
@@ -47,6 +74,7 @@ public class SeleccionButacaController extends SceneController{
         Butaca butaca = this.cineController.getButaca(fila,columna);
         if (butaca.estaDisponible()) {
             Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
+            confirmationAlert.setTitle("Confirmación");
             confirmationAlert.setHeaderText("¿Seguro que quieres reservar este asiento?");
             Optional<ButtonType> resultado = confirmationAlert.showAndWait();
 
