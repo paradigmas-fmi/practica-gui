@@ -1,20 +1,19 @@
 package org.practicagui.View;
 
-import org.practicagui.Model.Persona.Persona;
-
 public class PersonaView {
 
-    private Persona persona;
-
-    public PersonaView(Persona persona) {
-        this.persona = persona;
+    String nombre;
+    String apellido;
+    public PersonaView(String nombre, String apellido) {
+        this.nombre = nombre;
+        this.apellido = apellido;
     }
 
     public String mostrarPersona() {
-        return String.format("Datos de la persona:\n" +
+        return String.format(
                 "Nombre: %s\n" +
-                "Apellido: %s\n" +
-                "DNI: &s\n", persona.getNombre(), persona.getApellido(), persona.getDNI());
+                "Apellido: %s\n"
+                , this.nombre, this.apellido);
     }
 
     @Override

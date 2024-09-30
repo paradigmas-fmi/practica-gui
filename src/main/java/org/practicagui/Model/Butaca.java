@@ -32,14 +32,5 @@ public class Butaca {
     public Persona getOcupante() {
         return ocupante;
     }
-
-    public int getFila() {
-        return fila;
-    }
-
-    public int getNumero() {
-        return numero;
-    }
-
 }
 

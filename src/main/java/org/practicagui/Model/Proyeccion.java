@@ -33,11 +33,11 @@ public class Proyeccion {
         return reservas;
     }
 
-    public boolean realizarReserva(Persona persona, int fila, int butaca) {
-        if (fila < 0 || butaca < 0) {
+    public boolean realizarReserva(Persona persona, int fila, int columna) {
+        if (fila < 0 || columna < 0) {
             return false;
         }
-        Butaca butacaAReservar = this.reservas[fila-1][butaca-1];
+        Butaca butacaAReservar = this.reservas[fila][columna];
         if (!butacaAReservar.estaDisponible()) {
             return false;
         }
@@ -45,17 +45,6 @@ public class Proyeccion {
         return true;
     }
 
-    public int getCantidadDisponibles() {
-        int cantidadDisponibles = 0;
-        for (Butaca[] butacas : this.reservas) {
-            for (Butaca butaca : butacas) {
-                if (butaca.estaDisponible()) {
-                    cantidadDisponibles++;
-                }
-            }
-        }
-        return cantidadDisponibles;
-    }
 
     public String getPelicula() {
         return pelicula.getTitulo();
@@ -87,5 +76,9 @@ public class Proyeccion {
             return (Objects.equals(p.getPelicula(), this.pelicula.getTitulo())) && (p.getHorario() == this.horario) && (p.getSala() == sala.getId());
         }
         return false;
+    }
+
+    public Butaca getButaca(int fila, int columna) {
+        return this.reservas[fila][columna];
     }
 }

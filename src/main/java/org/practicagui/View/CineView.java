@@ -3,11 +3,9 @@ package org.practicagui.View;
 import org.practicagui.Model.Cine;
 import org.practicagui.Model.Pelicula;
 import org.practicagui.Model.Proyeccion;
-import org.practicagui.Model.Sala;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class CineView {

@@ -1,5 +1,6 @@
 package org.practicagui.Controller;
 
+import org.practicagui.Model.Butaca;
 import org.practicagui.Model.Cine;
 import org.practicagui.Model.Pelicula;
 import org.practicagui.Model.Persona.Persona;
@@ -12,11 +13,11 @@ import org.practicagui.View.ProyeccionView;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 
-public class CineController { // Removed static
+public class CineController {
 
-    private static CineController instance; // Changed to private static
-    private Cine cine; // Changed to private
-    private CineView cineView; // Changed to private
+    private static CineController instance;
+    private Cine cine;
+    private CineView cineView;
     private Persona usuarioActual;
     private Pelicula peliculaSeleccionada;
     private Proyeccion proyeccionSeleccionada;
@@ -42,6 +43,7 @@ public class CineController { // Removed static
         this.cineView = new CineView(cine);
     }
 
+    //Patron singleton
     public static CineController getInstance() {
         if (instance == null) {
             instance = new CineController();
@@ -84,7 +86,18 @@ public class CineController { // Removed static
         return proyeccionSeleccionada;
     }
 
-//    public boolean crearReserva(Proyeccion) {
-//
-//    }
+    public Butaca getButaca(int fila, int columna) {
+        if (this.proyeccionSeleccionada == null) {
+            return null;
+        }
+        return this.proyeccionSeleccionada.getButaca(fila, columna);
+    }
+
+    public void crearReserva(int fila, int columna) {
+        if (this.proyeccionSeleccionada == null) {
+            return;
+        }
+        this.proyeccionSeleccionada.realizarReserva(this.usuarioActual, fila, columna);
+    }
+
 }

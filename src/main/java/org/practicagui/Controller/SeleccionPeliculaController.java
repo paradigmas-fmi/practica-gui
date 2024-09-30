@@ -4,7 +4,6 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.geometry.Rectangle2D;
 import javafx.scene.control.ComboBox;
 
 import javafx.scene.image.Image;
@@ -13,9 +12,7 @@ import org.practicagui.View.PeliculaView;
 import org.practicagui.View.ProyeccionView;
 
 import java.io.IOException;
-import java.net.URL;
 import java.util.ArrayList;
-import java.util.Objects;
 
 public class SeleccionPeliculaController extends SceneController {
 
