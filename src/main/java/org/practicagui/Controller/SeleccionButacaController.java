@@ -3,6 +3,7 @@ package org.practicagui.Controller;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.ButtonType;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -45,24 +46,20 @@ public class SeleccionButacaController extends SceneController{
 
         Butaca butaca = this.cineController.getButaca(fila,columna);
         if (butaca.estaDisponible()) {
-            Alert confirmationAlert = new Alert(Alert.AlertType.CONFIRMATION);
+            Alert confirmationAlert = new Alert(AlertType.CONFIRMATION);
             confirmationAlert.setHeaderText("¿Seguro que quieres reservar este asiento?");
             Optional<ButtonType> resultado = confirmationAlert.showAndWait();
 
-            if (resultado.isPresent() && resultado.get() == ButtonType.OK){
+            if (resultado.isPresent() && resultado.get() == ButtonType.OK) {
                 this.cineController.crearReserva(fila, columna);
                 nodo.setImage(this.butacaView.getAsientoOcupado());
-                Alert confirmedAlert = new Alert(Alert.AlertType.INFORMATION);
-                confirmedAlert.setHeaderText("Reserva realizada");
-                confirmedAlert.show();
+                this.showAlert(AlertType.CONFIRMATION, "Confirmación", "Reserva realizada.", null);
             }
         } else {
-            Alert ocupadoAlert = new Alert(Alert.AlertType.INFORMATION);
             PersonaView ocupante = new PersonaView(butaca.getOcupante().getNombre(), butaca.getOcupante().getApellido());
-            ocupadoAlert.setHeaderText("Este asiento esta reservado por:\n " + ocupante.mostrarPersona());
-            ocupadoAlert.show();
+            String mensajeReserva = "Este asiento esta reservado por:\n" + ocupante.mostrarPersona();
+            this.showAlert(AlertType.INFORMATION, "Información de reserva", mensajeReserva, null);
         }
-
     }
 
     public void handleLogoutButton(ActionEvent e) throws IOException {

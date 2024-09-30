@@ -133,6 +133,6 @@
          </padding>
       </GridPane>
       <Label alignment="CENTER" contentDisplay="CENTER" layoutX="262.0" layoutY="513.0" prefHeight="55.0" prefWidth="260.0" text="Pantalla" textAlignment="CENTER" />
-       <Button fx:id="logoout" layoutY="574.0" onAction="#handleLogoutButton" text="Cerrar sesion" />
+       <Button fx:id="logoout" layoutY="574.0" onAction="#handleLogoutButton" text="Volver al inicio" />
    </children>
 </AnchorPane>

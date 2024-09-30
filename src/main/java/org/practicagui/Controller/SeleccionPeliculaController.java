@@ -4,6 +4,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Alert;
 import javafx.scene.control.ComboBox;
 
 import javafx.scene.image.Image;
@@ -43,7 +44,6 @@ public class SeleccionPeliculaController extends SceneController {
                 poster.setImage(new Image(imagePath));
                 cineController.seleccionarPelicula(seleccionPelicula);
                 proyeccionesView = cineController.getProyeccionesViewPelicula(cineController.getPeliculaSeleccionada());
-                proyeccionesView.add(0,null);
                 ObservableList<ProyeccionView> proyeccionesList = FXCollections.observableArrayList(proyeccionesView);
                 dropdownFuncion.setItems(proyeccionesList);
             } catch (RuntimeException ex) {
@@ -72,7 +72,7 @@ public class SeleccionPeliculaController extends SceneController {
         if (this.cineController.getPeliculaSeleccionada() != null && this.cineController.getProyeccionSeleccionada() != null) {
             this.switchScene(e, "/SeleccionButaca.fxml");
         } else {
-            this.showAlert("Campos sin seleccionar", "Por favor seleccione una película y función.");
+            this.showAlert(Alert.AlertType.WARNING, "Campos sin seleccionar", null, "Por favor seleccione una película y función.");
         }
 
     }

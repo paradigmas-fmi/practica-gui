@@ -7,6 +7,7 @@ import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
 import org.practicagui.Model.Persona.EmailValidator;
 import org.practicagui.Model.Persona.IDValidator;
+import javafx.scene.control.Alert.AlertType;
 
 import java.io.IOException;
 
@@ -32,18 +33,18 @@ public class LoginController extends SceneController {
         String emailText = emailBox.getText();
 
         if (nombreText.isEmpty() || apellidoText.isEmpty() || dniText.isEmpty() || emailText.isEmpty()) {
-            this.showAlert("Campos vacíos", "Por favor rellene todos los campos");
+            this.showAlert(AlertType.WARNING,"Campos vacíos", null,"Por favor rellene todos los campos");
         } else if (!IDValidator.validarDni(dniText)) {
-            this.showAlert("Formato de número inválido.", "Por favor ingrese un número entre 1000000 y 99999999 en el campo DNI.");
+            this.showAlert(AlertType.WARNING, "Formato de número inválido.", null, "Por favor ingrese un número entre 1000000 y 99999999 en el campo DNI.");
         } else if (!EmailValidator.validarEmail(emailText)) {
-            this.showAlert("Dirección de e-mail inválida.", "Por favor ingrese una dirección de e-mail válida. Ejemplo: johndoe@gmail.com");
+            this.showAlert(AlertType.WARNING, "Dirección de e-mail inválida.", null, "Por favor ingrese una dirección de e-mail válida. Ejemplo: johndoe@gmail.com");
         } else {
             int dniInt = Integer.parseInt(dniText);
             if (this.cineController != null) {
                 this.cineController.crearPersona(nombreText, apellidoText, dniInt, emailText);
                 this.switchScene(e, "/SeleccionPelicula.fxml");
             } else {
-                this.showAlert("Error", "cineController no está inicializado.");
+                this.showAlert(AlertType.WARNING, "Error", null, "cineController no está inicializado.");
             }
         }
     }
